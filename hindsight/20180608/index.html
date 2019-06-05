@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>夏睡醒了秋-后知后觉</title>
+		<link rel="shortcut icon" type="image/x-icon" href="../../logo.png" />
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="../../js/jquery.scrollTo.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../css/hindsight.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/hindsight1.css"/>
+	</head>
+	<style type="text/css">
+		.fix-side-menu {
+			position: fixed;
+			right: 2%;
+			width: 50px;
+			height: 50px;
+			background: #efefef;
+			bottom: 15%;
+			opacity: 0.94;
+		    z-index: 4
+		}
+	
+		.fix-side-menu a {
+			margin: 14px 14px;
+			display: inline-block;
+			width: 22px;
+			height: 22px;
+			background: url(../../img/go-top.png) no-repeat -29px -41px;
+		}
+		.null{
+			height: 233px;
+			border: 1px solid red;
+			margin-top: 10px;
+			border-radius: 10px;
+		}
+		.go-button-left,.go-button-right,.go-top-left,.go-top-right{
+			border: 1px solid red;
+			border-bottom: 3px solid red;
+			line-height: 30px;
+			width: 70px;
+			text-align: center;
+			float: left;
+			margin-left: 10px;
+			margin-bottom: 20px;
+		}
+		.go-button-right{
+			
+		}
+	</style>
+	<body>
+		<div class="fix-side-menu">
+			<a></a>
+		</div>
+		<div class="top-home" id="top">
+			<div><a href="../../index.html">Home</a></div>
+		</div>
+		<div class="top-img">
+			
+		</div>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="../../index.html">夏睡醒了秋</a>
+	        </div>
+	        <div id="navbar" class="collapse navbar-collapse">
+	          <ul class="nav navbar-nav">
+	            <li><a href="../../index.html">首页</a></li>
+	            <li><a href="../../messageBoard/index.html">留言</a></li>
+	            <li class="active"><a href="../index.html">后知后觉</a></li>
+	          </ul>
+	        </div><!--/.nav-collapse -->
+	      </div>
+	    </nav>
+    	<div class="container" style="margin-top: 20px;">
+    		<div class="top-home" id="top">
+			</div>
+			<div class="top-img">
+				
+			</div>
+			
+			<div class="menu-wai">
+				<!--<div class="menu">
+					<div class="menu1">后知</div>
+					<div class="menu2">后觉</div>
+				</div>-->
+			
+			</div>
+		<div class="learn-diary">
+			
+			<div class="position">
+				位置：
+				<a href="../../index.html">xsxlq</a>>
+				<a href="../index.html">后知后觉</a>>
+				锚链接
+			</div>
+			<div class="every-diary">
+				<h3>流畅锚链接</h3>
+				<span class="diary-name">xsxlq</span>
+				<span class="diary-time">(2018-06-08)</span>
+				<hr />
+				<div class="go-button-left">
+					<a href="#button">去底部</a>
+				</div>
+				<div class="go-button-right">去底部</div>
+				<br />
+				<br />
+				<div class="null">
+					
+				</div>
+				<div class="null">
+					
+				</div>
+				<div class="null">
+					
+				</div>
+				<div class="null">
+					
+				</div>
+				<br />
+				<div id="button" class="go-top-left">
+					<a href="#top">
+						去顶部
+					</a>
+				</div>
+				<div class="go-top-right">去顶部</div>
+			</div>
+		</div>
+		</div>
+		
+		<div class="foot" style="color: #888888;margin: 18px auto 5px;font-size: 12px;text-align: center;">
+			<div class="footer">
+				2018 夏睡醒了秋.
+				<a href="http://www.miitbeian.gov.cn/" style="color: #888888;">豫ICP备18009558号-1</a>
+				<div style="width:300px;margin:0 auto; padding:5px 0;">
+			 		<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41142202000027" 
+			 			style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+			 			<img src="../../img/bei.png" style="float:left;"/>
+			 			<p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#888888;">豫公网安备 41142202000027号</p></a>
+			 	</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(".menu2").click(function(){
+			window.location.href = "../index2.html"
+		})
+		$(".fix-side-menu").click(function(){
+			$.scrollTo("#top",550);		
+		})
+		$(".go-button-right").click(function(){
+			$.scrollTo("#button",1000);		
+		})
+		$(".go-top-right").click(function(){
+			$.scrollTo("#top",1000);		
+		})
+		$(".navbar-nav li").click(function(){
+				$(this).siblings().removeClass("active");
+				$(this).addClass("active");
+			})
+	</script>
+</html>

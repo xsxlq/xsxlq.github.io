@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>夏睡醒了秋-后知后觉</title>
+<link rel="shortcut icon" type="image/x-icon" href="../../logo.png" />
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../index.html">夏睡醒了秋</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../index.html">首页</a></li>
+            <li><a href="../../messageBoard/index.html">留言</a></li>
+            <li class="active"><a href="../index.html">后知后觉</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+   	<div class="container" style="margin-top: 60px;">
+   		<div class="top"></div>
+   		<div class="learn-diary">
+			<div class="position">
+				位置：
+				<a href="../../index.html">xsxlq</a>>
+				<a href="../index.html">后知后觉</a>>
+				单点登录
+			</div>
+			<div class="every-diary">
+				<h3>单点登录</h3>
+				<span class="diary-name">xsxlq</span>
+				<span class="diary-time">(2018-09-15)</span>
+				<hr>
+				<div>当前用户：张三</div>
+				<div class="form-group">
+				    <p class="help-block">
+				    	关键词：servlet,session,filter,listener<br>
+				    	单点登录,同一用户限制同时在线.<br>
+				    	几种情况关系:
+				    	<div style="float: left">1.</div>
+				    	<div style="margin-left: 15px">登录后，servlet保存回话(session).</div>
+				    	<div style="float: left">2.</div>
+				    	<div style="margin-left: 15px">跳过登录页，直接访问登录后后面：通过过滤器(filter)判断是否存在登录回话(session)选择是否允许访问.</div>
+				    	<div style="float: left">3.</div>
+				    	<div style="margin-left: 15px">强制下线：监听器(listener)监听添加登录回话(session),如果session(id)已存在，将已存在的session(id)移除,
+				    	本次登录会将异地登录挤下线，保证单点登录，避免同一用户同时在线.</div>
+				    </p>
+				</div>
+				<hr />
+					<br />
+					<span>监听部分</span>
+					<br />
+				<span>
+					<pre>
+private Map&lt;Integer,HttpSession&gt; loginSessionList = new HashMap<>();
+	
+    public SSOSessionListener() {
+    }
+    public void attributeAdded(HttpSessionBindingEvent event)  { 
+    	HttpSession session = event.getSession();
+    	String name = event.getName();
+    	if("LoginUser".equals(name)) {
+    		Users u = (Users) event.getValue();
+    		HttpSession loginSession = loginSessionList.get(u.getId());
+    		if(loginSession != null) {
+    			loginSession.invalidate();
+    			loginSessionList.remove(u.getId());
+    		}
+    		loginSessionList.put(u.getId(), session);
+    		
+    	}
+    }				
+					</pre>
+				</span>
+				<hr />
+					<br />
+					<span>过滤部分</span>
+					<br />
+				<span>
+					<pre>
+HttpServletRequest req = (HttpServletRequest) request;
+HttpServletResponse resp = (HttpServletResponse) response;
+//请求地址
+String url = req.getRequestURL().toString();
+//请求地址  名+类型
+String path = url.substring(url.lastIndexOf("/")+1);
+//正则 资源文件
+Pattern pattern = Pattern.compile("(css|js|jpg|gif|png|jpeg)$");
+Matcher mather = pattern.matcher(path);
+
+// 过滤白名单
+List<String> urls = Arrays.asList("login.html","LoginServlet");
+
+// 判断是否登录
+HttpSession session = req.getSession();
+Users u = (Users) session.getAttribute("LoginUser");
+if(u!=null) {
+	chain.doFilter(request, response);
+}else if(urls.contains(path) ||mather.matches()){
+	chain.doFilter(request, response);
+}else {
+	resp.sendRedirect("login.html");
+}		
+					</pre>
+				</span>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="foot" style="color: #888888;margin: 18px auto 5px;font-size: 12px;text-align: center;">
+		<div class="footer">
+			2018 夏睡醒了秋.
+			<a href="http://www.miitbeian.gov.cn/" style="color: #888888;">豫ICP备18009558号-1</a>
+			<div style="width:300px;margin:0 auto; padding:5px 0;">
+		 		<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41142202000027" 
+		 			style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+		 			<img src="img/bei.png" style="float:left;"/>
+		 			<p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#888888;">豫公网安备 41142202000027号</p></a>
+		 	</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$(function(){
+		$("#submit").click(function(){
+			var uname = $("#name").val();
+			var password = $("#pwd").val();
+			$.post("LoginServlet",{"name":uname,"pwd":password},function(data){
+				if(data=="0"){
+					$(".help-block").text("用户名或密码错误！")
+				}else{
+					window.location.href=data;
+				}
+					
+			})
+		})
+	})
+</script>
+</html>
