@@ -1,0 +1,406 @@
+.body{
+	margin: 0px 6px;
+	padding: 0;
+	background-color: #F3F3F3;
+}
+
+a {
+	text-decoration: none;
+	color: #6F6F6E;
+}
+
+.top {
+	height: 30px;
+	background-color: #F3F3F3;
+	max-width: 1024px;
+	margin: auto;
+}
+
+.top .top-div {
+	width: 95%;
+	margin: 0 auto;
+	background-color: #F3F3F3;
+	text-align: right;
+	line-height: 30px;
+}
+
+.top-div a {
+	font-size: 12px;
+}
+
+.logo-div {
+	height: 80px;
+	width: 100%;
+}
+
+.top-img {
+	transition: 1s;
+	max-width: 1200px;
+	height: 100%;
+	background-image: url(../img/img.jpg);
+	background-size: cover;
+	margin: 26px auto 0px;
+}
+
+.main-content {
+	position: relative;
+	margin-top: 20px;
+	max-width: 1024px;
+	margin: 0 auto;
+	padding: 4px 5px 0px;
+}
+
+.main-content h2 {
+	line-height: 30px;
+	font-size: 16px;
+	color: #6F6F6E;
+	margin: 0;
+}
+
+.main-content h2:nth-child(2) {
+	border-bottom: 5px solid #DB6D4C;
+}
+
+.cy {
+	width: 98%;
+	margin: 0 auto;
+}
+
+.service-wrap-w a,
+.split-txt,
+.user-address-gw {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.head-img-gw,
+.user-name-gw {
+	pointer-events: none;
+}
+
+.fix-side-menu {
+	position: fixed;
+	border:1px solid #D7D7D7;
+	right: 2%;
+	width: 50px;
+	height: 50px;
+	background: #FFFFFF;
+	bottom: 15%;
+	opacity: 0.94;
+    z-index: 4
+}
+
+.fix-side-menu span {
+	margin: 14px 14px;
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	background: url(../img/go-top.png) no-repeat -29px -41px;
+}
+
+.comment-active {
+	padding: 2px 5px;
+	border-bottom: 5px solid #DB6D4C;
+}
+
+.cy-logo,
+.note-text {
+	opacity: 0;
+}
+
+.visitor-comment {
+	position: absolute;
+	right: 0px;
+	top: 30px;
+	cursor: pointer;
+}
+
+.visitor-comment span:nth-child(1) {
+	font-size: 11px;
+	color: #DB6D4C;
+}
+
+.visitor-comment span:nth-child(2) {
+	font-weight: 600;
+	line-height: 30px;
+	font-size: 16px;
+	color: #6F6F6E;
+}
+
+.visitor-cy {
+	position: relative;
+	margin-top: 20px;
+	max-width: 1024px;
+	margin: 0 auto 60px;
+}
+
+.bum-comment {
+	margin-top: 25px;
+	border: 1px solid #E74851;
+	box-shadow: 0px 5px 5px #E74851;
+	border-radius: 10px;
+	padding-bottom: 20px;
+	overflow: hidden;
+	background: white;
+}
+
+.bum-comment h3 {
+	margin-left: 5px;
+	font-weight: 700;
+	padding: 10px;
+	border-left: 5px solid #E74851;
+	/*border-bottom:1px solid #d22222;*/
+	color: #E74851;
+}
+
+.xsxlq-comment {
+	overflow: hidden;
+	border-bottom: 1px dashed #C0C0C0;
+	padding: 10px 0px;
+}
+
+.xsxlq-append-comment {
+	overflow: hidden;
+	border-bottom: 1px dashed #C0C0C0;
+	padding: 10px 0px;
+}
+
+.xsxlq-comment .name {
+	display: inline-block;
+	margin-top: 10px;
+	margin-left: 10px;
+	color: #E74851;
+	font-size: 14px;
+}
+
+.xsxlq-comment .cont {
+	float: left;
+	margin-left: 10px;
+	color: black;
+	font-size: 13px;
+}
+
+.xsxlq-comment .time {
+	float: right;
+	margin-right: 10px;
+	color: #C0C0C0;
+	font-size: 13px;
+}
+
+#last-time {
+	color: red;
+	font-size: 20px;
+	border-bottom: 1px solid #C0C0C0;
+}
+
+.xsxlq-test-comment {
+	margin: 20px 20px auto 20px;
+	padding-bottom: 10px;
+}
+
+.xsxlq-test-comment input ,textarea{
+	outline: none;
+	/*width: 95%;*/
+	border: 1px solid #DB6D4C;
+	color: #DB6D4C;
+}
+
+.xsxlq-test-comment .test-sub {
+	border-radius: 15px;
+	background: #DB6D4C;
+	color: white;
+	border: 1px solid #DB6D4C;
+	outline: none;
+	line-height: 25px;
+	font-size: 12px;
+	width: 100px;
+	display: block;
+	margin-top: 20px;
+}
+
+.like {
+	display: inline-block;
+	margin-left: 10px;
+	color: #DB6D4C;
+	font-size: 12px;
+	cursor: pointer;
+}
+#tap1,#tap2,h2,.header-login,.comment-text{
+	font-weight: 400!important;			
+}
+.header-login,.comment-text,.comment-number{
+	font-size: 14px!important;
+}
+.ctrl-item-wap{
+	display: none;
+}
+@media only screen and (min-width: 767px) {
+	.top-img{
+		display: none;
+	}
+	.logo-div{
+		height: 30px;
+	}
+}
+	/*/*@media screen and (min-width:320px ) {
+	html{
+		font-size: 14px;
+	}
+}
+@media screen and (min-width: 360px) {
+	html{
+		font-size: 16px;
+	}
+}
+@media screen and (min-width: 400px) {
+	html{
+		font-size: 18px;
+	}
+}
+@media screen and (min-width: 440px) {
+	html{
+		font-size: 20px;
+	}
+}
+@media screen and (min-width: 480px) {
+	html{
+		font-size: 22px;
+	}
+}
+@media screen and (min-width: 640px) {
+	html{
+		font-size: 28px;
+	}
+}*/
+
+.guide{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	top: 0;
+	position: absolute;
+	z-index: 99;
+}
+.guide .img{
+    position: relative;
+    top: 3em;
+    float: right;
+    top: 11em;
+    margin-right: 5em;
+    width: 9em;
+    height: 6em;
+    background-image:url(../img/guide.png);
+    background-size: cover;
+    border: 1px solid red;
+    text-align: center;
+}
+.guide .guideText{
+    /*border: 1px solid red;*/
+   display: inline-block;
+    margin:  3em auto 0;
+    font-size: 0.2em;
+    color: #0063A2;
+}
+.guide .isLoop{
+    /*border: 1px solid red;*/
+    position: absolute;
+    top: 10.7em;
+    left: 6em;
+    font-size: 0.5em;
+    color: #0063A2;
+    display: none;
+}
+.guide .guide-click{
+    position: absolute;
+    top: 3.5em;
+    left: 4.3em;
+    width: 3em;
+    height: 1.3em;
+}
+#say-error{
+	display: none;
+	color: red;
+	font-size: 12px;
+}
+/*-------------------头像----------------*/
+.icon{
+	float: left;
+	width: 30px;
+	height: 30px;
+	border: 0px solid #D7D7D7;
+	transition:all 0.45s;
+	overflow: hidden;
+}
+.iconStr{
+	text-align: center;
+	line-height: 30px;
+	font-size: 14px;
+	color: white;
+	background-color: #d22222;
+	border-radius: 50%;
+}
+.iconImg img{
+	background-size: cover;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+.contentInfo{
+	margin-left: 40px;
+	padding: 0 0 20px 10px;
+	/*background: #FCFEFF;
+	border: 1px solid #F7F7F7;*/
+	border-bottom: 1px dotted #ddd;
+}
+.contentInfo-reply{
+	margin-left: 40px;
+	padding: 0 0 20px 10px;
+	/*background: #FCFEFF;
+	border: 1px solid #F7F7F7;*/
+	border-bottom: 1px dotted #fcbb90;
+}
+.clear{
+	clear: both;
+}
+.reply{
+	margin: 10px 0 0px 20px;
+	
+}
+.every-reply-all{
+	margin-left:35px;
+	padding:10px 20px 10px 0px;
+	border: 1px #fcbb90 solid;
+	background: radial-gradient(ellipse,#fefcf4,white);
+	/*
+	background: linear-gradient(to bottom,#fefcf4,white);
+	background-color: #fefcf4;
+	*/
+	
+}
+.icon:hover{
+	transform:scale(1.8);
+	border: 0px;
+}
+/*---------全部评论-----------*/
+.every-comment{
+	margin-top: 10px;
+}
+.redFont{
+	font-size: 14px;
+}
+.redColorLine{
+	border-bottom: 1px dotted #fcbb90;
+	margin-left: 30px;
+}
+.playColor{
+	color: #888;
+	font-size: 12px;
+	display: inline-block;
+	margin: 0px 3px;
+}
+/*---------评论回复编辑-----------*/
+.editRey{
+	cursor: pointer;
+	font-size: 12px;
+	margin-left: 4px;
+}

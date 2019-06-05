@@ -1,0 +1,141 @@
+body{
+	background: #F3F3F3;
+	padding: 0px;
+	margin: 5px;
+}
+.top-home a{
+	font-size: 12px;
+	text-decoration: none;
+}
+.top-home div{
+	float: right;
+}
+.menu,.top-home,.learn-diary{
+	/*max-width: 1024px;*/
+	margin: auto;
+	overflow: hidden;
+	/*border: 1px solid red;*/
+}
+.menu-wai{
+	max-width: 1200px;
+	background: #000000;
+	margin: auto;
+	border-radius: 5px;
+}
+.menu{
+	background: #000000;
+	margin-top: 6px;
+}
+.menu1,.menu2{
+	color: #FFFFFF;
+	/*border: 1px solid red;*/
+	float: left;
+	width: 80px;
+	text-align: center;
+	line-height: 40px;
+	cursor: pointer;
+}
+.menu1{
+	border-top: 1px solid red;
+	border-left: 2px solid #000000;
+	color: #000000;
+	background: #F3F3F3;
+}
+.learn-diary{
+	margin-top: 10px;
+	/*background: #FFFFFF;*/
+	border-radius: 10px;
+	
+}
+h3{
+	color: #555555;
+}
+.every-diary{
+	background: white;
+	padding: 20px 15px 30px 20px;
+	position: relative;
+	margin-bottom: 10px;
+	clear: both;
+}
+.every-diary header{
+	margin: 0 10px 15px 0;
+}
+.every-diary header span{
+	background: #D9534F;
+	color: white;
+	padding: 6px 6px 4px;
+	font-size: 12px;
+}
+.every-diary header h2{
+	display: inline-block;
+	font-size: 20px;
+	margin: 0;
+	line-height: 25px;
+	margin-left: 10px;
+	font-weight: 400;
+}
+.every-diary .focus{
+	float: left;
+	
+	margin: 0 20px 0 0;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+	display: table;
+}
+.every-diary .focus:hover img{
+	transform: scale(1.2);
+}
+.every-diary .focus a img{
+	margin: 0 auto;
+	display: block;
+}
+img{
+	transition: all 0.4s;
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+	border: 0;
+}
+.every-diary .info{
+	color: #888888;
+	line-height: 24px;
+	margin-bottom: 0;
+}
+.every-diary .time-span{
+	float: right;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+p{
+	margin: 0 0 10px;
+	display: block;
+}
+.every-diary .time-span .diary-time{
+	font-size: 13px;
+	margin: 20px;
+	color: #777;
+}
+.every-diary .time-span .author{
+	color: blue;
+	font-size: 13px;
+}
+.every-diary:after{
+	clear: both;
+	line-height: 0;
+	content: "";
+	display: table;
+}
+.navbar-fixed-top{
+	padding: 0px 15px;
+}
+@media only screen and (max-width:767px ) {
+	.every-diary .focus a img{
+		max-width: 100px;
+		max-height: 68px;
+	}
+	.container{
+		padding: 0;
+	}
+}

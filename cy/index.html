@@ -1,0 +1,111 @@
+﻿<!--<!DOCTYPE html>-->
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>夏睡醒了秋</title>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script src="../js/jquery.scrollTo.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../css/cy.css"/>
+		<script src="../js/cy.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function show(){
+		
+				var xmlhttp = null;
+				if (window.XMLHttpRequest)
+				  {// code for IE7+, irefox, Chrome, Opera, Safari
+				  xmlhttp=new XMLHttpRequest();
+				  }
+				else
+				  {// code for IE6, IE5
+				  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				  }
+				xmlhttp.onreadystatechange=function()
+				  {
+				  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+				    {
+					  var strAll = xmlhttp.responseText;
+					
+					  var strs = strAll.split("~");
+					  var len = strs.length;
+					  for(var i = 0; i<len-1;i=i+3){
+					
+						$(".xsxlq-comment").prepend('<div class="xsxlq-append-comment"> <span class="name">'+strs[i]+' :</span><br /><span class="cont">'+strs[i+1]+'</span><span class="time">'+strs[i+2]+'</span></div>');
+					  }
+					 
+				    }
+				  }
+				
+				xmlhttp.open("POST","cy.txt?t="+Math.random(),true);
+					xmlhttp.send();
+				}
+			$(function() {
+				show();
+			})
+		</script>
+	</head>
+	<body>
+		<div class="top"  id="top">
+			<div class="top-div">
+				<a href="../index.html">Home</a>
+			</div>
+		</div>
+		<div class="logo-div">
+			<div class="top-img"></div>
+		</div>
+		<div class="main-content login-menu" id="top" style="display: none;">
+			<h2>夏睡醒了秋 &gt;</h2>
+			<h2>位置:<a href="../index.html">首页</a>&gt;登录留言:</h2>
+			<div class="visitor-comment">
+				<span>不想登录?</span>
+				<span id="tap1">游客留言</span>
+			</div>
+		</div>
+		<div class="fix-side-menu">
+			<a href=#top></a>
+		</div>
+		<div class="main-content visitor-menu" style="display: block;">
+			<h2>夏睡醒了秋 &gt;</h2>
+			<h2>位置:<a href="../index.html">首页</a>&gt;游客留言:</h2>
+			<div class="visitor-comment">
+				<span></span>
+				<span id="tap2"><a href="http://xsxlq.cn/messageBoard/index.jsp">登录留言</a></span>
+			</div>
+		</div>
+		<div class="visitor-cy" style="display: block;">
+			<div class="bum-comment">
+				<div class="xsxlq-test-comment">
+					<form action="comment.jsp" method="post" accept-charset="UTF-8" onsubmit="return checkForm()">
+						<!--昵称：-->
+						<input type="text" name="test-name" id="test-name" value="" placeholder=" 昵称：" /><br /><br /> 
+						<!--内容：<br />-->
+						<!--<input type="text" name="test-cont" id="test-cont" value="" placeholder="" />-->
+						<textarea name="test-cont" id="test-cont" rows="3" cols="" placeholder="内容："></textarea>
+						<br /><br />
+						<span id="say-error">昵称或内容为空</span>
+						<input type="submit" class="test-sub" value="提交"/>
+					</form>
+				</div>
+				<h3>留言板:</h3>
+				<div class="xsxlq-comment">
+					<span class="name">夏睡醒了秋 :</span><br />
+					<span class="cont">倒计时：<span id="last-time"></span> 秒.</span>
+					<span class="time">2018年4月6日 13:14:00</span>
+				</div>
+			</div>
+		</div>
+		<div class="foot" style="color: #888888;margin: 18px auto 10px;font-size: 12px;text-align: center;">
+			<div class="footer">
+				2018 夏睡醒了秋.
+				<a href="http://www.miitbeian.gov.cn/" style="color: #888888;">豫ICP备18009558号-1</a>
+				<div style="width:300px;margin:0 auto;">
+			 		<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41142202000027" 
+			 			style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+			 			<img src="../img/bei.png" style="float:left;"/>
+			 			<p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#888888;">豫公网安备 41142202000027号</p></a>
+			 	</div>
+			</div>
+		</div>
+	</body>
+</html>
