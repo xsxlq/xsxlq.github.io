@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="shortcut icon" type="image/x-icon" href="../logo.png" />
+		<title>夏睡醒了秋</title>
+		<link rel="stylesheet" type="text/css" href="../css/cy.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../css/pagination.css" />
+		
+		
+		
+		<link rel="stylesheet" href="../css/iziToast.min.css">
+		<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="../js/cy.js"></script>
+		<script src="../js/jquery.scrollTo.js"></script>
+		<script type="text/javascript" src="../js/jquery.pagination.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17-beta.0/vue.min.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="../css/showIsStaticPageNeedHelp.css"/>
+		<script src="../js/showIsStaticPageNeedHelp.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body class="body">
+		<div class="top" id="top">
+			<div class="top-div">
+				<a href="http://xsxlq.cn/">Home</a>
+			</div>
+		</div>
+		<div class="logo-div">
+			<div class="top-img"></div>
+		</div>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header" style="padding: 0px 0px;">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					 aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="../index.html">夏睡醒了秋</a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="../index.html">首页</a></li>
+						<li class="active"><a href="#">留言</a></li>
+						<li><a href="../hindsight/index.html">后知后觉</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</nav>
+		<div class="main-content visitor-menu" style="display: block;">
+			<h2>夏睡醒了秋 &gt;</h2>
+			<h2>
+				位置:<a href="../index.html">首页</a>&gt;游客留言:
+			</h2>
+			<div class="visitor-comment">
+				<span></span>
+			</div>
+		</div>
+		<div class="fix-side-menu">
+			<span></span>
+		</div>
+		<div class="visitor-cy" style="display: none;">
+			<div class="bum-comment">
+				<div class="xsxlq-test-comment">
+					<form action="" method="post" enctype="multipart/form-data" onsubmit="return showIsStaticPageNeedHelp()">
+						<div class="form-group">
+							<label for="exampleInputname">name</label> <input type="text" name="name" class="form-control" id="exampleInputname"
+							 placeholder="name" required="required" maxlength="10">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputContent">content</label>
+							<textarea class="form-control" name="content" rows="3" id="exampleInputContent" placeholder="content" required="required"
+							 maxlength="400"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Email</label> <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+							 placeholder="Email" required="required">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputFile">icon</label> <input type="file" name="icon" id="exampleInputFile" placeholder="头像"
+							 class="file" accept="image/*" onchange="verificationPicFile(this)">
+							<p class="help-block">选择上传头像( size &lt; 1024 kb )，默认头像使用昵称</p>
+						</div>
+						<button type="submit" class="btn btn-primary" style="background-color: #d22222; border: 1px solid #d22222; font-size: 12px;">确认</button>
+						<button type="reset" class="btn btn-primary" id="msgTop" style="background-color: #d22222; border: 1px solid #d22222; font-size: 12px;">重置</button>
+					</form>
+					<hr />
+					<blockquote>
+						<p>MessageBoard</p>
+						<footer>
+							Number of participants : 26（static）
+							<!-- <cite id="numberOfParticipants"
+							title="Source Title">loading...</cite> -->
+						</footer>
+						<footer>
+							Views : 300（static）
+							<!-- <cite id="views" title="Source Title">loading...</cite> -->
+						</footer>
+					</blockquote>
+					<hr />
+					<h3 class="redFont">全部评论</h3>
+					<div class="redColorLine"></div>
+					<input type="hidden" id="pageIndex" value="1">
+					<!-- 动态留言 -->
+					<!-- <div id="vue-info">
+					<div v-for="m in page.list" class="every-comment">
+						<div class="icon iconImg" v-if='m.message.icon != ""'>
+							<img :src="m.message.icon" />
+						</div>
+						<div class="icon iconStr" v-else>{{m.message.name.substring(0,1)}}</div>
+						<div>
+							<div class="contentInfo">
+								<span
+									style="color: #111; font-size: 12px; display: inline-block;">
+									{{m.message.name}} </span> <span class="playColor">游客</span> <span
+									style="color: #888; font-size: 12px;">{{m.message.t}}</span> <span
+									class="editRey" data-toggle="modal" data-target="#exampleModal"
+									:data-whatever="m.message.name"> <input type="hidden"
+									:value="m.message.id"> <input type="hidden"
+									:value="m.message.name"> 回复
+								</span><br> <span
+									style="font-size: 14px; display: inline-block; margin-top: 8px;">
+									{{m.message.content}} </span> <br>
+							</div>
+						</div>
+						<div class="clear"></div>
+						<div class="m-style"></div>
+						<div v-if='m.replyList != ""'>
+							<div class="every-reply-all">
+								<div class="reply" v-for="r in m.replyList">
+									<div class="icon iconStr">{{r.replyName.substring(0,1)}}</div>
+									<div>
+										<div class="contentInfo-reply">
+											<span
+												style="color: #111; font-size: 12px; display: inline-block;">
+												{{r.replyName}}</span> <span class="playColor">游客</span> <span
+												style="color: #888; font-size: 12px;">{{r.replyTime.substring(0,19)}}</span>
+											<br> <span
+												style="font-size: 14px; display: inline-block; margin-top: 8px;">{{r.replyContent}}</span>
+										</div>
+									</div>
+									<div class="clear"></div>
+									<div class="m-style"></div>
+								</div>
+							</div>
+						</div>
+						<div class="clear"></div>
+						<div class="m-style"></div>
+
+					</div>
+				</div> -->
+					<!-- 静态留言 -->
+					<div id="vue-info">
+						<div class="every-comment">
+							<div class="icon iconStr">范</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										范德萨范德萨 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2019-03-05
+										16:35:43</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="范德萨范德萨" class="editRey"><input
+										 type="hidden" value="58"> <input type="hidden" value="范德萨范德萨"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										发的所发生的 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconImg"><img src="http://xsxlq.cn/iconUpload/1549617178122.png"></div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										111 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2019-02-08
+										17:12:58</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="111" class="editRey"><input
+										 type="hidden" value="57"> <input type="hidden" value="111"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										111 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconImg"><img src="http://xsxlq.cn/iconUpload/1545914830604.jpg"></div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										quaint </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-12-27
+										20:47:10</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="quaint" class="editRey"><input
+										 type="hidden" value="56"> <input type="hidden" value="quaint"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										test </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<div>
+								<div class="every-reply-all">
+									<div class="reply">
+										<div class="icon iconStr">q</div>
+										<div>
+											<div class="contentInfo-reply"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+													quaint2</span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-12-27
+													20:47:43</span> <br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">123456</span></div>
+										</div>
+										<div class="clear"></div>
+										<div class="m-style"></div>
+									</div>
+								</div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconImg"><img src="http://xsxlq.cn/iconUpload/1544346625075.gif"></div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										同学 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-12-09
+										17:10:25</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="同学" class="editRey"><input
+										 type="hidden" value="55"> <input type="hidden" value="同学"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										怎么改了？ </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconImg"><img src="http://xsxlq.cn/iconUpload/1544345895762.jpg"></div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										化成雪的水 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-12-09
+										16:58:15</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="化成雪的水" class="editRey"><input
+										 type="hidden" value="54"> <input type="hidden" value="化成雪的水"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										不奢华，不违心，不张扬，不听从。 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">我</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										我假装知道 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-11-09
+										17:16:09</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="我假装知道" class="editRey"><input
+										 type="hidden" value="53"> <input type="hidden" value="我假装知道"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										hello </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconImg"><img src="http://xsxlq.cn/iconUpload/1539508409986.jpg"></div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										张三 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-10-14
+										17:13:29</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="张三" class="editRey"><input
+										 type="hidden" value="52"> <input type="hidden" value="张三"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										头像测试 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<div>
+								<div class="every-reply-all">
+									<div class="reply">
+										<div class="icon iconStr">李</div>
+										<div>
+											<div class="contentInfo-reply"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+													李四</span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-10-14
+													17:23:43</span> <br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">回复测试</span></div>
+										</div>
+										<div class="clear"></div>
+										<div class="m-style"></div>
+									</div>
+									<div class="reply">
+										<div class="icon iconStr">h</div>
+										<div>
+											<div class="contentInfo-reply"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+													hn</span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-10-14
+													21:27:16</span> <br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">hn</span></div>
+										</div>
+										<div class="clear"></div>
+										<div class="m-style"></div>
+									</div>
+									<div class="reply">
+										<div class="icon iconStr">最</div>
+										<div>
+											<div class="contentInfo-reply"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+													最</span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-12-14
+													21:52:56</span> <br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">哦？</span></div>
+										</div>
+										<div class="clear"></div>
+										<div class="m-style"></div>
+									</div>
+								</div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">哈</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										哈哈哈 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-09-14
+										16:21:09</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="哈哈哈" class="editRey"><input
+										 type="hidden" value="48"> <input type="hidden" value="哈哈哈"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										大神 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">你</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										你猜 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-08-16
+										22:51:46</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="你猜" class="editRey"><input
+										 type="hidden" value="18"> <input type="hidden" value="你猜"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										快更新*^_^* </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">n</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										null </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-07-15
+										16:36:36</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="null" class="editRey"><input
+										 type="hidden" value="17"> <input type="hidden" value="null"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										null </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+
+
+
+
+						<div class="every-comment">
+							<div class="icon iconStr">不</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										不写昵称行不行 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-07-13
+										22:18:53</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="不写昵称行不行" class="editRey"><input
+										 type="hidden" value="16"> <input type="hidden" value="不写昵称行不行"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										白色T恤，黑色短裤，☔️ </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">快</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										快乐牙医 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-07-13
+										07:03:13</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="快乐牙医" class="editRey"><input
+										 type="hidden" value="15"> <input type="hidden" value="快乐牙医"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										不错 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">棕</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										棕色的枕头 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-07-03
+										22:38:29</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="棕色的枕头" class="editRey"><input
+										 type="hidden" value="14"> <input type="hidden" value="棕色的枕头"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										不奢求，不迁就，不违心，不敷衍，不彷徨，不忧伤。 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">会</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										会飞的鱼 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-07-02
+										13:04:39</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="会飞的鱼" class="editRey"><input
+										 type="hidden" value="13"> <input type="hidden" value="会飞的鱼"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										奋进 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">咖</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										咖喱 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-06-17
+										07:21:02</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="咖喱" class="editRey"><input
+										 type="hidden" value="12"> <input type="hidden" value="咖喱"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										233 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+
+
+
+
+						<div class="every-comment">
+							<div class="icon iconStr">李</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										李白 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-06-14
+										11:51:09</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="李白" class="editRey"><input
+										 type="hidden" value="11"> <input type="hidden" value="李白"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										努力有用的话还要天才干什么 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">大</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										大乔 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-06-14
+										11:31:09</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="大乔" class="editRey"><input
+										 type="hidden" value="10"> <input type="hidden" value="大乔"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										守望者天空，大海 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">安</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										安琪拉 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-06-14
+										11:23:58</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="安琪拉" class="editRey"><input
+										 type="hidden" value="9"> <input type="hidden" value="安琪拉"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										神秘，只会屈从于更高的神秘。 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">你</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										你学长 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-06-07
+										14:58:05</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="你学长" class="editRey"><input
+										 type="hidden" value="8"> <input type="hidden" value="你学长"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										hello world </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">Q</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										Quaint </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-06-05
+										20:19:50</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="Quaint" class="editRey"><input
+										 type="hidden" value="7"> <input type="hidden" value="Quaint"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										Quaint到此一游 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+
+
+
+						<div class="every-comment">
+							<div class="icon iconStr">中</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										中国 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-06-05
+										16:17:50</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="中国" class="editRey"><input
+										 type="hidden" value="6"> <input type="hidden" value="中国"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										河南 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">我</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										我是谁 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-06-05
+										13:52:46</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="我是谁" class="editRey"><input
+										 type="hidden" value="5"> <input type="hidden" value="我是谁"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										我在哪里？ </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">水</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										水调歌头 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-06-04
+										20:08:10</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="水调歌头" class="editRey"><input
+										 type="hidden" value="4"> <input type="hidden" value="水调歌头"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										明月几时有 把酒问青天 不知天上宫阙 今夕是何年 我欲乘风归去 又恐琼楼玉宇 高处不胜寒 起舞弄清影 何似在人间 转朱阁 低绮户 照无眠 不应有恨 何事长向别时圆 人有悲欢离合 月有阴晴圆缺 此事古难全 但愿人长久
+										千里共婵娟…… </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">电</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										电影 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-06-04
+										20:05:13</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="电影" class="editRey"><input
+										 type="hidden" value="3"> <input type="hidden" value="电影"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										大话西游 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+						<div class="every-comment">
+							<div class="icon iconStr">雪</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										雪花 </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-06-01
+										18:22:12</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="雪花" class="editRey"><input
+										 type="hidden" value="2"> <input type="hidden" value="雪花"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										中文 </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<!---->
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+
+
+
+						<div class="every-comment">
+							<div class="icon iconStr">j</div>
+							<div>
+								<div class="contentInfo"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+										jack </span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-06-01
+										18:20:41</span> <span data-toggle="modal" data-target="#exampleModal" data-whatever="jack" class="editRey"><input
+										 type="hidden" value="1"> <input type="hidden" value="jack"> 回复
+									</span><br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">
+										Engtest </span> <br></div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+							<div>
+								<div class="every-reply-all">
+									<div class="reply">
+										<div class="icon iconStr">A</div>
+										<div>
+											<div class="contentInfo-reply"><span style="color: rgb(17, 17, 17); font-size: 12px; display: inline-block;">
+													A</span> <span class="playColor">游客</span> <span style="color: rgb(136, 136, 136); font-size: 12px;">2018-12-09
+													19:55:28</span> <br> <span style="font-size: 14px; display: inline-block; margin-top: 8px;">replyTest</span></div>
+										</div>
+										<div class="clear"></div>
+										<div class="m-style"></div>
+									</div>
+								</div>
+							</div>
+							<div class="clear"></div>
+							<div class="m-style"></div>
+						</div>
+
+
+
+					</div>
+					<br>
+					<div class="pageControl" style="margin: 0px auto; width: 211px">
+						<a href="javascript:sendLocation('first')">首页</a>&nbsp; <a href="javascript:sendLocation('up')">上页</a>&nbsp;
+						<span id="in" style="color: red">1</span>&nbsp; <a href="javascript:sendLocation('next')">下页</a>&nbsp; <a href="javascript:sendLocation('last')">尾页</a>&nbsp;
+						共 <span id="point" style="color: red">1</span> 页
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="foot" style="color: #888888; margin: 18px auto 10px; font-size: 12px; text-align: center;">
+			<div class="footer">
+				2018 夏睡醒了秋. <a href="http://www.miitbeian.gov.cn/" style="color: #888888;">豫ICP备18009558号-1</a>
+				<div style="width: 300px; margin: 0 auto;">
+					<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41142202000027" style="display: inline-block; text-decoration: none; height: 20px; line-height: 20px;">
+						<img src="../img/bei.png" style="float: left;" />
+						<p style="float: left; height: 20px; line-height: 20px; margin: 0px 0px 0px 5px; color: #888888;">豫公网安备
+							41142202000027号</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="exampleModalLabel">回复</h4>
+					</div>
+					<div class="modal-body">
+						<form action="" method="post" onsubmit="return showIsStaticPageNeedHelp()">
+							<input type="hidden" class="mid" name="mid" value="0">
+							<div class="form-group">
+								<label for="recipient-name" class="control-label">昵称:</label> <input type="text" required="required" name="replyName"
+								 class="form-control" id="recipient-name" maxlength="10">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="control-label">内容:</label>
+								<textarea class="form-control" name="replyContent" required="required" id="message-text" maxlength="150"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Email</label> <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+								 name="replyEmail" placeholder="Email" required="required">
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+								<button type="submit" class="btn btn-primary">确认</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 静态页面提示 -->
+		<div id="showIsStaticPageNeedHelp"></div>
+		
+
+	</body>
+	<script type="text/javascript">
+		var v = new Vue({
+			el: "#vue-info",
+			data: {
+				page: ""
+			},
+			// 创建组件执行
+			created: function() {
+				// var e = this;
+				// $.post("../MessageServlet", function(data) {
+				// 	e.page = data;
+				// 	$("#point").text(data.pageCount);
+				// }, "json")
+			}
+		});
+		//简单分页
+		function sendLocation(type) {
+			return 1;
+// 			var go = 0;
+// 			var index = 1;
+// 			if (type == "last") {
+// 				if (parseInt($("#pageIndex").val()) != v.page.pageCount) {
+// 					index = v.page.pageCount;
+// 					go = 1;
+// 				}
+// 			} else if (type == "up") {
+// 				if (parseInt($("#pageIndex").val()) != 1) {
+// 					index = parseInt($("#pageIndex").val()) - 1;
+// 					go = 1;
+// 				}
+// 			} else if (type == "next") {
+// 				if (parseInt($("#pageIndex").val()) != v.page.pageCount) {
+// 					index = parseInt($("#pageIndex").val()) + 1;
+// 					go = 1;
+// 				}
+// 			} else {
+// 				if (parseInt($("#pageIndex").val()) != 1) {
+// 					go = 1;
+// 				}
+// 			}
+// 			if (go == 1) {
+// 
+// 				$.post("../MessageServlet", {
+// 					"index": index
+// 				}, function(data) {
+// 					v.page = data;
+// 					$("#pageIndex").val(data.pageIndex);
+// 					$("#in").text(data.pageIndex);
+// 				}, "json")
+// 				$.scrollTo("#msgTop", 600);
+// 			}
+		}
+		
+
+		//加载动画及留言框信息
+		$(function() {
+			$(".visitor-cy").slideDown(800);
+			// $.post("../MessageAllNum", function(data) {
+			// 	$("#numberOfParticipants").text(data.numberOfParticipants)
+			// 	$("#views").text(data.count);
+			// }, "json")
+			$("body").on("click", ".editRey", function() {
+				var uname = $(this).children("input:nth(1)").val();
+				var m = $(this).children("input:nth(0)").val();
+				$("#exampleModalLabel").text("回复 [ " + uname + " ]");
+				$(".mid").val(m);
+				console.log(uname + m);
+			})
+
+		})
+		//图片大小验证
+		function verificationPicFile(file) {
+			var fileSize = 0;
+			var fileMaxSize = 1024; //1M
+			var filePath = file.value;
+			if (filePath) {
+				fileSize = file.files[0].size;
+				var size = fileSize / 1024;
+				if (size > fileMaxSize) {
+					fileError(this);
+					file.value = "";
+					return false;
+				} else if (size <= 0) {
+					alert("图片大小不能为0M！");
+					file.value = "";
+					return false;
+				}
+			} else {
+				return false;
+			}
+		}
+	</script>
+</html>
